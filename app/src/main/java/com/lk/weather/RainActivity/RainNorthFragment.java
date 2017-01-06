@@ -1,6 +1,8 @@
 package com.lk.weather.RainActivity;
 
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -10,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lk.weather.AirActivity.AirRecyclerAdapter;
+import com.lk.weather.DBAccess;
 import com.lk.weather.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +32,8 @@ public class RainNorthFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
     private FloatingActionButton fab;
+    ArrayList<RainDataModel>list;
+    DBAccess access;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,11 +49,21 @@ public class RainNorthFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startActivity(new Intent(getActivity(),AddEvent.class));
+                 startActivity(new Intent(getActivity(),RainAddData.class));
             }
         });
-        adapter = new RainRecyclerAdapter();
+        //初始化access
+        access=new DBAccess(getActivity(),"weather",null,1);
+        list=new ArrayList<RainDataModel>();
+        Cursor c=access.getData("rain",null, null);
+        c.moveToFirst();
+        for(int i=0;i<c.getCount();i++){
+            list.add(new RainDataModel(c.getString(1),Integer.parseInt(c.getString(2)),Integer.parseInt(c.getString(3))));
+            c.moveToNext();
+        }
+        adapter = new RainRecyclerAdapter(list,getActivity());
         recyclerView.setAdapter(adapter);
+
 
 
 

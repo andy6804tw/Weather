@@ -11,10 +11,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-class DBAccess extends SQLiteOpenHelper {
+public class DBAccess extends SQLiteOpenHelper {
 
 
-    DBAccess(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {//建構子1.哪個Activity呼叫2.資料庫名稱 3.資料庫物件4.版本
+   public  DBAccess(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {//建構子1.哪個Activity呼叫2.資料庫名稱 3.資料庫物件4.版本
         super(context, name, factory, version);
     }
 
@@ -103,13 +103,13 @@ class DBAccess extends SQLiteOpenHelper {
 
     }
     //建立新增rain
-    long add(String r_date, int  acc_indaay, String acc_beforeday) {
+   public long add(String r_date, int  acc_indaay, int acc_beforeday) {
 
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues val3 = new ContentValues();
-        val3.put("r_date", "2017/01/03");
-        val3.put("acc_inday",20768);
-        val3.put("acc_beforeday",20768);
+        val3.put("r_date", r_date);
+        val3.put("acc_inday",acc_indaay);
+        val3.put("acc_beforeday",acc_beforeday);
         return db.insert("rain", null, val3);
     }
     //建立新增wind
@@ -143,12 +143,12 @@ class DBAccess extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues values = new ContentValues();
 
-        /*ContentValues val1 = new ContentValues();
+        ContentValues val1 = new ContentValues();
         val1.put("c_name", "台北市");
         val1.put("population", 800);
         val1.put("Number_of_village", 8);
         val1.put("area", 1800);
-        long result=db.insert("country", null, val1);*/
+        long result=db.insert("country", null, val1);
 
 
         for(int i =0;i<=500;i++){
@@ -278,7 +278,7 @@ class DBAccess extends SQLiteOpenHelper {
 
         return 1;
     }
-    Cursor getData(String NAME, String whereStr, String orderbyStr){
+    public Cursor getData(String NAME, String whereStr, String orderbyStr){
         /*
          select _id, title, date, time
           from todolist

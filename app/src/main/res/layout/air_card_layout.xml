@@ -22,11 +22,11 @@
             android:text="昨日水量下降:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvWater"
-            android:layout_alignLeft="@+id/tvWater"
-            android:layout_alignStart="@+id/tvWater"
+            android:layout_below="@+id/tvCountry"
+            android:layout_alignLeft="@+id/tvCountry"
+            android:layout_alignStart="@+id/tvCountry"
             android:layout_marginTop="10dp"
-            android:id="@+id/tvDown"
+            android:id="@+id/tvDate"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
         <TextView
@@ -34,10 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:id="@+id/tvDay"
-            android:layout_below="@+id/tvDown"
-            android:layout_alignLeft="@+id/tvDown"
-            android:layout_alignStart="@+id/tvDown"
+            android:id="@+id/tvInday"
+            android:layout_below="@+id/tvDate"
+            android:layout_alignLeft="@+id/tvDate"
+            android:layout_alignStart="@+id/tvDate"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
         <TextView
@@ -47,9 +47,9 @@
             android:layout_marginTop="11dp"
             android:id="@+id/tvUpdate"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:layout_below="@+id/tvDay"
-            android:layout_alignLeft="@+id/tvDay"
-            android:layout_alignStart="@+id/tvDay" />
+            android:layout_below="@+id/tvInday"
+            android:layout_alignLeft="@+id/tvInday"
+            android:layout_alignStart="@+id/tvInday" />
 
         <TextView
             android:text="有效水量:"
@@ -58,7 +58,7 @@
             android:layout_marginLeft="33dp"
             android:layout_marginStart="33dp"
             android:layout_marginTop="25dp"
-            android:id="@+id/tvWater"
+            android:id="@+id/tvCountry"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:layout_alignParentTop="true" />
 

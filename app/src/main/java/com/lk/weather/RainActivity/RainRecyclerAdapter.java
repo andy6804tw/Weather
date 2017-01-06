@@ -1,5 +1,6 @@
 package com.lk.weather.RainActivity;
 
+import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,25 +10,33 @@ import android.widget.TextView;
 
 import com.lk.weather.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by andy6804tw on 2017/1/5.
  */
 
 public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapter.ViewHolder> {
 
+    ArrayList<RainDataModel> list=new ArrayList<>();
+    Context mContext;
 
+    public RainRecyclerAdapter(ArrayList<RainDataModel>list,Context mContext) {
+        this.list=list;
+        this.mContext=mContext;
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
 
-        public TextView tvWater,tvDay,tvUpdate,tvDown;
+        public TextView tvDate,tvInday,tvBeforeday,tvCountry;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvWater = (TextView)itemView.findViewById(R.id.tvWater);
-            tvDay =(TextView)itemView.findViewById(R.id.tvDay);
-            tvDown =(TextView)itemView.findViewById(R.id.tvDown);
-            tvUpdate =(TextView)itemView.findViewById(R.id.tvUpdate);
+            tvCountry = (TextView)itemView.findViewById(R.id.tvCountry);
+            tvDate =(TextView)itemView.findViewById(R.id.tvDate);
+            tvInday =(TextView)itemView.findViewById(R.id.tvInday);
+            tvBeforeday =(TextView)itemView.findViewById(R.id.tvBeforeday);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -52,16 +61,16 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder,int i) {
-        viewHolder.tvWater.setText("有效蓄水量:"+RainActivity.Water.get(i)+"萬立方公頃");
-        viewHolder.tvDay.setText("預測剩餘天數:"+"60天以上");
-        viewHolder.tvUpdate.setText("最後更新日期:"+RainActivity.Update.get(i));
-        viewHolder.tvDown.setText("今日進水量:"+RainActivity.Down.get(i));
+        viewHolder.tvDate.setText("今日日期:"+list.get(i).r_date);
+        viewHolder.tvCountry.setText("預測剩餘天數:"+"60天以上");
+        viewHolder.tvInday.setText("今日下雨量:"+list.get(i).acc_inday);
+        viewHolder.tvBeforeday.setText("昨日下雨量:"+list.get(i).acc_beforeday);
 
     }
 
     @Override
     public int getItemCount() {
-        return RainActivity.Day.size();
+        return list.size();
     }
 
 

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.lk.weather.AirActivity.AirActivity;
 import com.lk.weather.R;
 
 import java.util.ArrayList;
@@ -26,9 +25,9 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvWater = (TextView) itemView.findViewById(R.id.tvWater);
-            tvDay = (TextView) itemView.findViewById(R.id.tvDay);
-            tvDown = (TextView) itemView.findViewById(R.id.tvDown);
+            tvWater = (TextView) itemView.findViewById(R.id.tvCountry);
+            tvDay = (TextView) itemView.findViewById(R.id.tvInday);
+            tvDown = (TextView) itemView.findViewById(R.id.tvDate);
             tvUpdate = (TextView) itemView.findViewById(R.id.tvUpdate);
 
             itemView.setOnClickListener(new View.OnClickListener() {

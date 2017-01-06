@@ -28,33 +28,30 @@ public class MainActivity extends AppCompatActivity {
         //更改狀態欄顏色
         WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
         localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-        ListView listView=(ListView)findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView);
         //設定資料
-        item_list=new ArrayList<>();
-        item_list.add(new todoItem("雨量","Rain",R.drawable.rain));
-        item_list.add(new todoItem("風速","Wind",R.drawable.wind));
-        item_list.add(new todoItem("空氣","Air",R.drawable.air));
-        TodoAdapter todoAdapter=new TodoAdapter(this,item_list);
+        item_list = new ArrayList<>();
+        item_list.add(new todoItem("雨量", "Rain", R.drawable.rain));
+        item_list.add(new todoItem("風速", "Wind", R.drawable.wind));
+        item_list.add(new todoItem("空氣", "Air", R.drawable.air));
+        TodoAdapter todoAdapter = new TodoAdapter(this, item_list);
         listView.setAdapter(todoAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
+                if (position == 0) {
                     startActivity(new Intent(MainActivity.this, RainActivity.class));
-                }
-                else if(position==1){
+                } else if (position == 1) {
                     startActivity(new Intent(MainActivity.this, WindSpeedActivity.class));
-                }
-                else if(position==2){
+                } else if (position == 2) {
                     startActivity(new Intent(MainActivity.this, AirActivity.class));
                 }
 
             }
         });
         //初始化access
-        access=new DBAccess(this,"schedule",null,1);
+        access = new DBAccess(this, "weather", null, 1);
         //addData();
-        call();
     }
     public void  call(){
 
