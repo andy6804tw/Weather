@@ -48,7 +48,7 @@
                 android:layout_marginRight="20dp"
                 android:padding="15dp"
                 android:ems="10"
-                android:id="@+id/edtDate"
+                android:id="@+id/edtInday"
                 android:hint="今日雨量" />
         </android.support.design.widget.TextInputLayout>
 
@@ -70,9 +70,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:padding="15dp"
-                android:layout_below="@+id/edtDate"
-                android:layout_alignLeft="@+id/edtDate"
-                android:layout_alignStart="@+id/edtDate" />
+                android:layout_below="@+id/edtInday"
+                android:layout_alignLeft="@+id/edtInday"
+                android:layout_alignStart="@+id/edtInday" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout

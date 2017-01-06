@@ -61,6 +61,17 @@
             android:id="@+id/tvCountry"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:layout_alignParentTop="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&#8942;"
+            android:id="@+id/tvOption"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

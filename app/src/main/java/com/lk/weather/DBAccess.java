@@ -329,7 +329,16 @@ public class DBAccess extends SQLiteOpenHelper {
 
     }
 
-
+public  long update(String acc_indaay,String acc_beforeday,String whereClause) {
+    SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
+    ContentValues values =new ContentValues();
+    values.put("acc_inday",acc_indaay);
+    values.put("acc_beforeday",acc_beforeday);
+    //執行更新資料
+    long result=db.update("rain", values, whereClause, null);
+    db.close();
+    return result;//回傳更新資料筆數
+}
 
 
 }

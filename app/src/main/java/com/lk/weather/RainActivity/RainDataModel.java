@@ -6,10 +6,11 @@ package com.lk.weather.RainActivity;
 
 public class RainDataModel {
 
-    String r_date;
+    String id,r_date;
     int acc_inday,acc_beforeday;
 
-    public RainDataModel(String r_date, int acc_inday,int acc_beforeday) {
+    public RainDataModel(String id,String r_date, int acc_inday,int acc_beforeday) {
+        this.id=id;
         this.r_date = r_date;
         this.acc_inday = acc_inday;
         this.acc_beforeday = acc_beforeday;

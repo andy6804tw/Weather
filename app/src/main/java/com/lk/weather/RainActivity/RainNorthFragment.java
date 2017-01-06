@@ -58,7 +58,7 @@ public class RainNorthFragment extends Fragment {
         Cursor c=access.getData("rain",null, null);
         c.moveToFirst();
         for(int i=0;i<c.getCount();i++){
-            list.add(new RainDataModel(c.getString(1),Integer.parseInt(c.getString(2)),Integer.parseInt(c.getString(3))));
+            list.add(new RainDataModel(c.getString(0),c.getString(1),Integer.parseInt(c.getString(2)),Integer.parseInt(c.getString(3))));
             c.moveToNext();
         }
         adapter = new RainRecyclerAdapter(list,getActivity());
