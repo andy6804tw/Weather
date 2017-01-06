@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lk.weather.MainActivity"
+    android:weightSum="1"
+    android:background="#e6e5e5">
+
+    <ImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/bg01"
+        android:id="@+id/imageView"
+        android:layout_height="229dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.04"
+        android:id="@+id/listView" />
+</LinearLayout>

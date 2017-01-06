@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view"
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="#c8d4f7b9"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="3dp"
+    card_view:contentPadding="4dp"
+    android:foreground="?selectableItemBackground"
+    android:clickable="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp" >
+
+        <TextView
+            android:text="昨日水量下降:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvWater"
+            android:layout_alignLeft="@+id/tvWater"
+            android:layout_alignStart="@+id/tvWater"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvDown"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+
+        <TextView
+            android:text="預測剩餘天數:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:id="@+id/tvDay"
+            android:layout_below="@+id/tvDown"
+            android:layout_alignLeft="@+id/tvDown"
+            android:layout_alignStart="@+id/tvDown"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+
+        <TextView
+            android:text="最後更新日期:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:id="@+id/tvUpdate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:layout_below="@+id/tvDay"
+            android:layout_alignLeft="@+id/tvDay"
+            android:layout_alignStart="@+id/tvDay" />
+
+        <TextView
+            android:text="有效水量:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="25dp"
+            android:id="@+id/tvWater"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
