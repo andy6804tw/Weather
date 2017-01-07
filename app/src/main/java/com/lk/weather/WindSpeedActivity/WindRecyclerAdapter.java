@@ -2,6 +2,7 @@ package com.lk.weather.WindSpeedActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
@@ -16,7 +17,6 @@ import com.github.ahmadnemati.wind.WindView;
 import com.github.ahmadnemati.wind.enums.TrendType;
 import com.lk.weather.DBAccess;
 import com.lk.weather.R;
-import com.lk.weather.RainActivity.RainModifyData;
 
 import java.util.ArrayList;
 
@@ -72,11 +72,17 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder,final int i) {
-
-        viewHolder. windView.setPressure(90);
+        //初始化access
+        access=new DBAccess(mContext,"weather",null,1);
+        Cursor c=access.getData("country",null, null);
+        c.move(list.get(i).position);
+        viewHolder.tvDate.setText(list.get(i).w_date);
+        viewHolder.tvCountry.setText(c.getString(1) );
+        //動畫設置
+        viewHolder. windView.setPressure(Integer.parseInt(list.get(i).gust));
         viewHolder.windView.setPressureUnit("km/h");
-        viewHolder.windView.setWindSpeed(4);
-        viewHolder.windView.setWindText("東");
+        viewHolder.windView.setWindSpeed(Integer.parseInt(list.get(i).speeed)*10);
+        viewHolder.windView.setWindText(list.get(i).deriction);
         viewHolder.windView.setBarometerText("陣風");
         viewHolder.windView.setWindSpeedUnit(" km/h");
         viewHolder.windView.setTrendType(TrendType.UP);
@@ -100,14 +106,14 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
                             case R.id.mnu_item_modify://修改
                                 //Toast.makeText(mContext, "modify"+" "+MainActivity.list.get(i).getId(), Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent();
-                                intent.setClass(mContext, RainModifyData.class); //設定新活動視窗類別
+                                intent.setClass(mContext, WindModifyData.class); //設定新活動視窗類別
                                 Bundle bundle = new Bundle();
                                 bundle.putString("id", list.get(i).id);//將id傳遞到新的活動視窗中 從1開始?
                                 intent.putExtras(bundle);
                                 mContext.startActivity(intent); //開啟新的活動視窗
                                 break;
                             case R.id.mnu_item_delete://刪除
-                                access.delete("rain",list.get(i).id);
+                                access.delete("windspeed",list.get(i).id);
                                 list.remove(i);
                                 notifyDataSetChanged();
                                 break;

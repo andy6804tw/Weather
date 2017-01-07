@@ -32,7 +32,7 @@ public class WindSpeedActivity extends AppCompatActivity {
         WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
         localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         toolbar = (Toolbar) findViewById(R.id.app_bar);
-        toolbar.setTitle("雨量");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

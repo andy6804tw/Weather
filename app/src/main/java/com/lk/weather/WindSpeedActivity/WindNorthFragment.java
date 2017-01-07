@@ -60,12 +60,10 @@ public class WindNorthFragment extends Fragment {
         Cursor c2=access.getData("country",null, null);
         c.moveToFirst();
         c2.moveToFirst();
-        c.moveToFirst();
-        c2.moveToFirst();
         for(int i=0;i<c.getCount();i++){
             c2.moveToFirst();
             c2.move(Integer.parseInt(c.getString(7))-1);
-            Log.e("Data country",c2.getString(1)+" "+c2.getString(5)+"  "+c.getString(7));
+            Log.e("Data country",c2.getString(1)+" "+c.getString(1)+" "+c.getString(2)+" "+c.getString(3)+" "+c.getString(4)+" "+c.getString(5)+" "+c.getString(6));
             if(c2.getString(5).equals("北部")){
                 list.add(new WindDataModel(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getString(5),c.getString(6),Integer.parseInt(c.getString(7))));
                /* Log.e("Data country", c2.getString(1) + " " + c2.getString(2) + " "

@@ -36,7 +36,7 @@ public class DBAccess extends SQLiteOpenHelper {
         String sql2="create table windspeed("
                 +"c_id integer primary key autoincrement,"
                 +"w_date text,"
-                +"deirection text,"
+                +"direction text,"
                 +"speed text,"
                 +"pufu_speed text,"
                 +"gust text,"
@@ -119,16 +119,16 @@ public class DBAccess extends SQLiteOpenHelper {
        //return db.update("rain", val3, whereClause, null);
     }
     //建立新增wind
-    public long add(String W_date,String direction,String speed,String pufu_speed,String gust,String pufu_gust,int position){
+    public long add(String w_date,String direction,String speed,String pufu_speed,String gust,String pufu_gust,int position){
 
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues val2 = new ContentValues();
-        val2.put("w_date", "2017/01/03");
-        val2.put("deirection", "東");
-        val2.put("speed", 25.25);
-        val2.put("pufu_speed", 10);
-        val2.put("gust", 23.45);
-        val2.put("pufu_gust", 11);
+        val2.put("w_date",w_date);
+        val2.put("direction",direction);
+        val2.put("speed", speed);
+        val2.put("pufu_speed", pufu_speed);
+        val2.put("gust", gust);
+        val2.put("pufu_gust", pufu_gust);
         val2.put("position",position);
         return db.insert("windspeed", null, val2);
     }
@@ -473,7 +473,7 @@ public class DBAccess extends SQLiteOpenHelper {
             }
             case "windspeed": {
 
-                return db.query(NAME, new String[]{"c_id", "w_date", "deirection", "speed"
+                return db.query(NAME, new String[]{"c_id", "w_date", "direction", "speed"
                                 , "pufu_speed", "gust", "pufu_gust","position"}
                         , whereStr, null, null, null, orderbyStr);
             }
@@ -522,11 +522,22 @@ public class DBAccess extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
        int result=0;
        //進行刪除
-       if(TABLE_NAME.equals("rain")){
-           result=db.delete(TABLE_NAME,"c_id ="+_id, null);
-       }
+       result=db.delete(TABLE_NAME,"c_id ="+_id, null);
         db.close();
         return result;//回傳刪除筆數
     }
-
+    //更新wind
+    public  long update(String direction,String speed,String pufu_speed,String gust,String pufu_gust,String whereClause) {
+        SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
+        ContentValues values =new ContentValues();
+        values.put("direction",direction);
+        values.put("speed",speed);
+        values.put("pufu_speed",pufu_speed);
+        values.put("gust",gust);
+        values.put("pufu_gust",pufu_gust);
+        //執行更新資料
+        long result=db.update("windspeed", values, whereClause, null);
+        db.close();
+        return result;//回傳更新資料筆數
+    }
 }

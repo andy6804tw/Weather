@@ -27,7 +27,7 @@ android:orientation="vertical">
         android:background="@drawable/text_view_border"
         android:layout_marginRight="5dp"
         android:paddingLeft="20dp"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="35dp" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -52,7 +52,7 @@ android:orientation="vertical">
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/edtDeriction"
-            android:hint="今日雨量"
+            android:hint="風向"
             android:background="@drawable/input_outlin"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
@@ -74,7 +74,7 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/edtSpeed"
-            android:hint="昨日雨量"
+            android:hint="風速"
             android:background="@drawable/input_outlin"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
