@@ -2,6 +2,7 @@ package com.lk.weather.RainActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
@@ -25,6 +26,7 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
 
     ArrayList<RainDataModel> list=new ArrayList<>();
     Context mContext;
+    DBAccess access;
 
     public RainRecyclerAdapter(ArrayList<RainDataModel>list,Context mContext) {
         this.list=list;
@@ -67,8 +69,12 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder,final int i) {
+        //初始化access
+        access=new DBAccess(mContext,"weather",null,1);
+        Cursor c=access.getData("country",null, null);
+        c.move(list.get(i).position);
         viewHolder.tvDate.setText("今日日期:" + list.get(i).r_date);
-        viewHolder.tvCountry.setText("縣市:" + "台南市");
+        viewHolder.tvCountry.setText("縣市:" +c.getString(1) );
         viewHolder.tvInday.setText("今日下雨量:" + list.get(i).acc_inday);
         viewHolder.tvBeforeday.setText("昨日下雨量:" + list.get(i).acc_beforeday);
         //設定卡片選項item option
@@ -96,7 +102,10 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
                                 mContext.startActivity(intent); //開啟新的活動視窗
                                 break;
                             case R.id.mnu_item_delete://刪除
-
+                                access.delete("rain",list.get(i).id);
+                                list.remove(i);
+                                notifyDataSetChanged();
+                                break;
                             default:
                                 break;
                         }

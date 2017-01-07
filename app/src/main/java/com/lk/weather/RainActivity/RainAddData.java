@@ -1,6 +1,7 @@
 package com.lk.weather.RainActivity;
 
 import android.app.DatePickerDialog;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -10,8 +11,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +31,10 @@ public class RainAddData extends AppCompatActivity {
     TextView tvDate,tvTime;
     DateFormat formatDateTime;
     Calendar dateTime ;
+    Spinner spinner;
+    String mStrCountry;
+    int mPosition=0;
+    String[]country=new String[]{"台北市","新北市","桃園市","基隆市","新竹市","新竹縣","宜蘭縣","台中市","苗栗縣","彰化縣","南投縣","雲林縣","台南市","高雄市","嘉義市","嘉義縣","屏東縣","台東縣","花蓮縣","澎湖縣","金門縣","連江縣"};
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +67,23 @@ public class RainAddData extends AppCompatActivity {
                         dateTime.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,country);//設定資料來源陣列
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//顯示格式下拉
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mStrCountry=parent.getSelectedItem().toString();
+                mPosition=position+1;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -85,12 +110,25 @@ public class RainAddData extends AppCompatActivity {
         if (TextUtils.isEmpty(tvDate.getText().toString()))
             Toast.makeText(RainAddData.this, "請正確選擇日期哦!", Toast.LENGTH_LONG).show();
         else {
-            long result = access.add(tvDate.getText().toString(),Integer.parseInt(edtInday.getText().toString()), Integer.parseInt(edtBeforeday.getText().toString()));
-            if (result >= 0) {
-                Toast.makeText(RainAddData.this, "成功!", Toast.LENGTH_LONG).show();
+            //檢查存在
+            Cursor c=access.getData("rain",null, null);
+            c.moveToFirst();
+            int k;
+            for(k=0;k<c.getCount();k++){
+                if(Integer.parseInt(c.getString(4))==mPosition)
+                    break;
+            }
+            if(k!=c.getCount()){
+                Toast.makeText(RainAddData.this, "縣市已存在", Toast.LENGTH_LONG).show();
                 finish();
-            } else {
-                Toast.makeText(RainAddData.this, "失敗!", Toast.LENGTH_LONG).show();
+            }else{
+                long result = access.add(tvDate.getText().toString(),edtInday.getText().toString(),edtBeforeday.getText().toString(),mPosition);
+                if (result >= 0) {
+                    Toast.makeText(RainAddData.this, "成功!"+mPosition+1, Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(RainAddData.this, "失敗!", Toast.LENGTH_LONG).show();
+                }
             }
             edtInday.setText("");
             tvDate.setText("");

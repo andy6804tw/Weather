@@ -22,11 +22,13 @@ public class DBAccess extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {//第一次建構資料表呼叫,應用程式第一次執行會做
 
 
-        String sql1="create table country(c_id integer primary key autoincrement,"
+        String sql1="create table country("
+                +"c_id integer primary key autoincrement,"
                 +"c_name text,"
                 +"population text,"
                 +"area text,"
-                +"Number_of_village text"
+                +"Number_of_village text,"
+                +"region text"
                 +")";
         Log.e("SQLDB",sql1);
         db.execSQL(sql1);
@@ -49,6 +51,7 @@ public class DBAccess extends SQLiteOpenHelper {
                 +"r_date text,"
                 +"acc_inday text,"
                 +"acc_beforeday text,"
+                +"position text,"
                 +"foreign key (c_id) references country (c_id) ON DELETE CASCADE"
                 +")";
         Log.e("SQLDB",sql3);
@@ -103,14 +106,16 @@ public class DBAccess extends SQLiteOpenHelper {
 
     }
     //建立新增rain
-   public long add(String r_date, int  acc_indaay, int acc_beforeday) {
+   public long add(String r_date, String  acc_indaay, String acc_beforeday,int position) {
 
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues val3 = new ContentValues();
+        val3.put("position",position);
         val3.put("r_date", r_date);
         val3.put("acc_inday",acc_indaay);
         val3.put("acc_beforeday",acc_beforeday);
         return db.insert("rain", null, val3);
+       //return db.update("rain", val3, whereClause, null);
     }
     //建立新增wind
     long add(String W_date,String direction,int speed,int pufu_speed,int gust,int pufu_gust){
@@ -142,15 +147,186 @@ public class DBAccess extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues values = new ContentValues();
+        //城市
 
-        ContentValues val1 = new ContentValues();
-        val1.put("c_name", "台北市");
-        val1.put("population", 800);
-        val1.put("Number_of_village", 8);
-        val1.put("area", 1800);
-        long result=db.insert("country", null, val1);
+        ContentValues val01 = new ContentValues();
+        val01.put("c_name", "台北市");
+        val01.put("population", 270);
+        val01.put("Number_of_village", 12);
+        val01.put("area", 271.80);
+        val01.put("region", "北部");
+        db.insert("country", null, val01);
+
+        ContentValues val02 = new ContentValues();
+        val02.put("c_name", "新北市");
+        val02.put("population", 397);
+        val02.put("Number_of_village", 29);
+        val02.put("area", 2052.57);
+        val02.put("region", "北部");
+        db.insert("country", null, val02);
+
+        ContentValues val03 = new ContentValues();
+        val03.put("c_name", "桃園市");
+        val03.put("population", 210);
+        val03.put("Number_of_village", 13);
+        val03.put("area", 1220.95);
+        val03.put("region", "北部");
+        db.insert("country", null, val03);
+
+        ContentValues val04 = new ContentValues();
+        val04.put("c_name", "基隆市");
+        val04.put("population", 37);
+        val04.put("Number_of_village", 7);
+        val04.put("area", 132.76);
+        val04.put("region", "北部");
+        db.insert("country", null, val04);
+
+        ContentValues val05 = new ContentValues();
+        val05.put("c_name", "新竹市");
+        val05.put("population", 43);
+        val05.put("Number_of_village", 3);
+        val05.put("area", 104.15);
+        val05.put("region", "北部");
+        db.insert("country", null, val05);
+
+        ContentValues val06 = new ContentValues();
+        val06.put("c_name", "新竹縣");
+        val06.put("population", 54);
+        val06.put("Number_of_village", 13);
+        val06.put("area", 1427.54);
+        val06.put("region", "北部");
+        db.insert("country", null, val06);
+
+        ContentValues val07 = new ContentValues();
+        val07.put("c_name", "宜蘭縣");
+        val07.put("population", 45);
+        val07.put("Number_of_village", 12);
+        val07.put("area", 2143.63);
+        val07.put("region", "北部");
+        db.insert("country", null, val07);
+
+        ContentValues val08 = new ContentValues();
+        val08.put("c_name", "台中市");
+        val08.put("population", 274);
+        val08.put("Number_of_village", 29);
+        val08.put("area", 2214.90);
+        val08.put("region", "中部");
+        db.insert("country", null, val08);
+
+        ContentValues val09 = new ContentValues();
+        val09.put("c_name", "苗栗縣");
+        val09.put("population", 56);
+        val09.put("Number_of_village", 18);
+        val09.put("area", 1820.31);
+        val09.put("region", "中部");
+        db.insert("country", null, val09);
+
+        ContentValues val10 = new ContentValues();
+        val10.put("c_name", "彰化縣");
+        val10.put("population", 128);
+        val10.put("Number_of_village", 26);
+        val10.put("area", 1074.40);
+        val10.put("region", "中部");
+        db.insert("country", null, val10);
+
+        ContentValues val11 = new ContentValues();
+        val11.put("c_name", "南投縣");
+        val11.put("population", 50);
+        val11.put("Number_of_village", 13);
+        val11.put("area", 4106.44);
+        val11.put("region", "中部");
+        db.insert("country", null, val11);
+
+        ContentValues val12 = new ContentValues();
+        val12.put("c_name", "雲林縣");
+        val12.put("population", 70);
+        val12.put("Number_of_village", 20);
+        val12.put("area", 1290.83);
+        val12.put("region", "中部");
+        db.insert("country", null, val12);
+
+        ContentValues val13 = new ContentValues();
+        val13.put("c_name", "台南市");
+        val13.put("population", 188);
+        val13.put("Number_of_village", 37);
+        val13.put("area", 2191.65);
+        val13.put("region", "南部");
+        db.insert("country", null, val13);
+
+        ContentValues val14 = new ContentValues();
+        val14.put("c_name", "高雄市");
+        val14.put("population", 278);
+        val14.put("Number_of_village", 38);
+        val14.put("area", 2951.85);
+        val14.put("region", "南部");
+        db.insert("country", null, val14);
+
+        ContentValues val15 = new ContentValues();
+        val15.put("c_name", "嘉義市");
+        val15.put("population", 27);
+        val15.put("Number_of_village", 2);
+        val15.put("area", 60.03);
+        val15.put("region", "南部");
+        db.insert("country", null, val15);
+
+        ContentValues val16 = new ContentValues();
+        val16.put("c_name", "嘉義縣");
+        val16.put("population", 51);
+        val16.put("Number_of_village", 18);
+        val16.put("area", 1903.64);
+        val16.put("region", "南部");
+        db.insert("country", null, val16);
+
+        ContentValues val17 = new ContentValues();
+        val17.put("c_name", "屏東縣");
+        val17.put("population", 84);
+        val17.put("Number_of_village", 33);
+        val17.put("area", 2775.60);
+        val17.put("region", "南部");
+        db.insert("country", null, val17);
+
+        ContentValues val18 = new ContentValues();
+        val18.put("c_name", "台東縣");
+        val18.put("population", 22);
+        val18.put("Number_of_village", 16);
+        val18.put("area", 3515.25);
+        val18.put("region", "南部");
+        db.insert("country", null, val18);
+
+        ContentValues val19 = new ContentValues();
+        val19.put("c_name", "花蓮縣");
+        val19.put("population", 33);
+        val19.put("Number_of_village", 13);
+        val19.put("area", 4628.57);
+        val19.put("region", "東部");
+        db.insert("country", null, val19);
+
+        ContentValues val20 = new ContentValues();
+        val20.put("c_name", "澎湖縣");
+        val20.put("population", 10);
+        val20.put("Number_of_village", 6);
+        val20.put("area", 126.86);
+        val20.put("region", "外島");
+        db.insert("country", null, val20);
+
+        ContentValues val21 = new ContentValues();
+        val21.put("c_name", "金門縣");
+        val21.put("population", 33);
+        val21.put("Number_of_village", 6);
+        val21.put("area", 151.66);
+        val21.put("region", "外島");
+        db.insert("country", null, val21);
+
+        ContentValues val22 = new ContentValues();
+        val22.put("c_name", "連江縣");
+        val22.put("population", 1);
+        val22.put("Number_of_village", 4);
+        val22.put("area", 28.80);
+        val22.put("region", "外島");
+        db.insert("country", null, val22);
 
 
+        //pm
         for(int i =0;i<=500;i++){
             ContentValues valfor1 = new ContentValues();
             if(i<=50) {
@@ -302,7 +478,7 @@ public class DBAccess extends SQLiteOpenHelper {
 
             case "rain": {
 
-                return db.query(NAME, new String[]{"c_id", "r_date", "acc_inday", "acc_beforeday"}
+                return db.query(NAME, new String[]{"c_id", "r_date", "acc_inday", "acc_beforeday","position"}
                         , whereStr, null, null, null, orderbyStr);
             }
             case "aqi": {
@@ -328,8 +504,8 @@ public class DBAccess extends SQLiteOpenHelper {
 
 
     }
-
-public  long update(String acc_indaay,String acc_beforeday,String whereClause) {
+    //更新rain
+    public  long update(String acc_indaay,String acc_beforeday,String whereClause) {
     SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
     ContentValues values =new ContentValues();
     values.put("acc_inday",acc_indaay);
@@ -339,6 +515,16 @@ public  long update(String acc_indaay,String acc_beforeday,String whereClause) {
     db.close();
     return result;//回傳更新資料筆數
 }
-
+    //刪除
+   public int delete(String TABLE_NAME,String _id){
+        SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
+       int result=0;
+       //進行刪除
+       if(TABLE_NAME.equals("rain")){
+           result=db.delete(TABLE_NAME,"c_id ="+_id, null);
+       }
+        db.close();
+        return result;//回傳刪除筆數
+    }
 
 }

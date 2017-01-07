@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 } else if (position == 2) {
                     startActivity(new Intent(MainActivity.this, AirActivity.class));
                 }
-
             }
         });
         //初始化access
