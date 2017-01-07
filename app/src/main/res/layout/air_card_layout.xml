@@ -26,7 +26,7 @@
             android:layout_alignLeft="@+id/tvCountry"
             android:layout_alignStart="@+id/tvCountry"
             android:layout_marginTop="10dp"
-            android:id="@+id/tvDate"
+            android:id="@+id/tvCountry"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
         <TextView
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:id="@+id/tvInday"
-            android:layout_below="@+id/tvDate"
-            android:layout_alignLeft="@+id/tvDate"
-            android:layout_alignStart="@+id/tvDate"
+            android:layout_below="@+id/tvCountry"
+            android:layout_alignLeft="@+id/tvCountry"
+            android:layout_alignStart="@+id/tvCountry"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
         <TextView

@@ -1,0 +1,168 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.lk.weather.WindSpeedActivity.WindAddActivity"
+android:orientation="vertical">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    >
+
+    <TextView
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvCountry"
+        android:hint="請選擇日期"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:background="@drawable/text_view_border"
+        android:layout_marginRight="5dp"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="15dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"></Spinner>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilCatrgory"
+        android:padding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/edtDeriction"
+            android:hint="今日雨量"
+            android:background="@drawable/input_outlin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="15dp"
+            android:layout_below="@+id/edtDeriction"
+            android:layout_alignLeft="@+id/edtDeriction"
+            android:layout_alignStart="@+id/edtDeriction" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilDesc"
+        android:padding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/edtSpeed"
+            android:hint="昨日雨量"
+            android:background="@drawable/input_outlin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="15dp"
+            android:inputType="textMultiLine"
+            android:layout_below="@+id/tvTime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilSpeed"
+        android:padding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/edtPufu_speed"
+            android:hint="風速的薄福風級"
+            android:background="@drawable/input_outlin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="15dp"
+            android:inputType="textMultiLine"
+            android:layout_below="@+id/tvTime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilGust"
+        android:padding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/edtGust"
+            android:hint="陣風風速"
+            android:background="@drawable/input_outlin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="15dp"
+            android:inputType="textMultiLine"
+            android:layout_below="@+id/tvTime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilGust2"
+        android:padding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/edtPufu_gust"
+            android:hint="陣風的薄福風級"
+            android:background="@drawable/input_outlin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="15dp"
+            android:inputType="textMultiLine"
+            android:layout_below="@+id/tvTime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>
+<Button
+    android:text="新增"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/新增"
+    android:onClick="addData"
+    android:textSize="15dp"
+    android:background="#333333"
+    android:textColor="#ffffff"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    />
+
+</RelativeLayout>

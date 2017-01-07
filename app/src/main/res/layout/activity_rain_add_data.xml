@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDate"
+            android:id="@+id/tvCountry"
             android:hint="請選擇日期"
             android:layout_gravity="center"
             android:textSize="20sp"
@@ -48,16 +48,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/edtInday"
+                android:id="@+id/edtDeriction"
                 android:hint="今日雨量"
                 android:background="@drawable/input_outlin"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:padding="15dp"
-                android:layout_below="@+id/edtInday"
-                android:layout_alignLeft="@+id/edtInday"
-                android:layout_alignStart="@+id/edtInday" />
+                android:layout_below="@+id/edtDeriction"
+                android:layout_alignLeft="@+id/edtDeriction"
+                android:layout_alignStart="@+id/edtDeriction" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout

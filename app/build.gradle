@@ -24,6 +24,7 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -35,5 +36,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.github.jakob-grabner:Circle-Progress-View:v1.2.9.1'
     compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.github.AhmadNemati:WindView:1.1.1'
+    compile 'me.itangqi.waveloadingview:library:0.3.5'
     testCompile 'junit:junit:4.12'
 }

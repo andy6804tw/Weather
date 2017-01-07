@@ -45,8 +45,8 @@ public class WindEastFragment extends Fragment {
                 // startActivity(new Intent(getActivity(),AddEvent.class));
             }
         });
-        adapter = new WindRecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+        //adapter = new WindRecyclerAdapter();
+        //recyclerView.setAdapter(adapter);
 
 
 

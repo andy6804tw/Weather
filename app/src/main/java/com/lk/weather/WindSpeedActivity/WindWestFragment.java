@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lk.weather.AirActivity.AirRecyclerAdapter;
 import com.lk.weather.R;
 
 /**
@@ -46,8 +45,8 @@ public class WindWestFragment extends Fragment {
                 // startActivity(new Intent(getActivity(),AddEvent.class));
             }
         });
-        adapter = new WindRecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+       //adapter = new WindRecyclerAdapter();
+        //recyclerView.setAdapter(adapter);
 
 
 

@@ -18,6 +18,8 @@ import com.lk.weather.R;
 
 import java.util.ArrayList;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
+
 /**
  * Created by andy6804tw on 2017/1/5.
  */
@@ -37,15 +39,16 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
 
 
         public TextView tvDate,tvInday,tvBeforeday,tvCountry,tvOption;
+        WaveLoadingView mWaveLoadingView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvCountry = (TextView)itemView.findViewById(R.id.tvCountry);
-            tvDate =(TextView)itemView.findViewById(R.id.tvDate);
+            tvDate =(TextView)itemView.findViewById(R.id.tvCountry);
             tvInday =(TextView)itemView.findViewById(R.id.tvInday);
             tvBeforeday =(TextView)itemView.findViewById(R.id.tvBeforeday);
             tvOption =(TextView)itemView.findViewById(R.id.tvOption);
-
+            mWaveLoadingView = (WaveLoadingView) itemView.findViewById(R.id.waveLoadingView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     int position = getAdapterPosition();
@@ -74,9 +77,16 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
         Cursor c=access.getData("country",null, null);
         c.move(list.get(i).position);
         viewHolder.tvDate.setText("今日日期:" + list.get(i).r_date);
-        viewHolder.tvCountry.setText("縣市:" +c.getString(1) );
-        viewHolder.tvInday.setText("今日下雨量:" + list.get(i).acc_inday);
-        viewHolder.tvBeforeday.setText("昨日下雨量:" + list.get(i).acc_beforeday);
+        viewHolder.tvCountry.setText(c.getString(1) );
+        viewHolder.tvInday.setText("今日下雨量:" + list.get(i).acc_inday+" mm");
+        viewHolder.tvBeforeday.setText("昨日下雨量:" + list.get(i).acc_beforeday+" mm");
+        //設定wave progress
+        viewHolder.mWaveLoadingView.setCenterTitle(list.get(i).acc_inday+" mm");
+        viewHolder.mWaveLoadingView.setProgressValue(Integer.parseInt(list.get(i).acc_inday)/10);
+        viewHolder.mWaveLoadingView.setAnimDuration(3000);
+        viewHolder.mWaveLoadingView.resumeAnimation();
+        viewHolder.mWaveLoadingView.startAnimation();
+
         //設定卡片選項item option
         viewHolder.tvOption.setOnClickListener(new View.OnClickListener() {
             @Override

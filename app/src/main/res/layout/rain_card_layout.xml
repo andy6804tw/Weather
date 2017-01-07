@@ -2,12 +2,12 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/card_view"
     android:layout_margin="5dp"
-    card_view:cardBackgroundColor="#c8d4f7b9"
+    card_view:cardBackgroundColor="#d5aecf96"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="3dp"
     card_view:contentPadding="4dp"
@@ -16,62 +16,85 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp" >
+        android:layout_height="wrap_content">
 
         <TextView
-            android:text="昨日水量下降:"
+                    android:text="今日雨量:150mm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvInday"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/tvDate"
+            android:layout_alignLeft="@+id/tvCountry"
+            android:layout_alignStart="@+id/tvCountry" />
+
+        <TextView
+            android:text="2016/12/13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tvDate"
             android:layout_below="@+id/tvCountry"
             android:layout_alignLeft="@+id/tvCountry"
-            android:layout_alignStart="@+id/tvCountry"
-            android:layout_marginTop="10dp"
-            android:id="@+id/tvDate"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            android:layout_alignStart="@+id/tvCountry" />
 
-        <TextView
-            android:text="預測剩餘天數:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:id="@+id/tvInday"
-            android:layout_below="@+id/tvDate"
-            android:layout_alignLeft="@+id/tvDate"
-            android:layout_alignStart="@+id/tvDate"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
-
-        <TextView
-            android:text="最後更新日期:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:id="@+id/tvBeforeday"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:layout_below="@+id/tvInday"
-            android:layout_alignLeft="@+id/tvInday"
-            android:layout_alignStart="@+id/tvInday" />
-
-        <TextView
-            android:text="有效水量:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="33dp"
-            android:layout_marginStart="33dp"
-            android:id="@+id/tvCountry"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:layout_alignParentTop="true" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="&#8942;"
             android:id="@+id/tvOption"
             android:textAppearance="?android:textAppearanceLarge"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:paddingTop="3dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="3dp" />
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:text="台北市"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCountry"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:layout_marginLeft="41dp"
+            android:layout_marginStart="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+                    android:text="昨日雨量:130mm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvBeforeday"
+            android:layout_alignBottom="@+id/waveLoadingView"
+            android:layout_alignLeft="@+id/tvInday"
+            android:layout_alignStart="@+id/tvInday" />
+
+        <me.itangqi.waveloadingview.WaveLoadingView
+            android:id="@+id/waveLoadingView"
+            app:wlv_borderColor="@android:color/holo_blue_dark"
+            app:wlv_borderWidth="3dp"
+            app:wlv_progressValue="40"
+            app:wlv_shapeType="rectangle"
+            app:wlv_round_rectangle="true"
+            app:wlv_triangle_direction="north"
+            app:wlv_titleCenterStrokeWidth="3dp"
+            app:wlv_titleCenter="150 mm"
+            app:wlv_titleCenterColor="@android:color/white"
+            app:wlv_titleCenterSize="15sp"
+            app:wlv_waveAmplitude="70"
+            app:wlv_waveColor="@android:color/holo_blue_dark"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_height="110dp"
+            android:layout_width="90dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/tvOption"
+            android:layout_toStartOf="@+id/tvOption"
+            android:background="#58d4f7b9"/>
 
     </RelativeLayout>
+
+
 </android.support.v7.widget.CardView>

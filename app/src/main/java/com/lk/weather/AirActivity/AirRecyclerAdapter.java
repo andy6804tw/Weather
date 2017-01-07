@@ -29,7 +29,7 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
             super(itemView);
             tvWater = (TextView)itemView.findViewById(R.id.tvCountry);
             tvDay =(TextView)itemView.findViewById(R.id.tvInday);
-            tvDown =(TextView)itemView.findViewById(R.id.tvDate);
+            tvDown =(TextView)itemView.findViewById(R.id.tvCountry);
             tvUpdate =(TextView)itemView.findViewById(R.id.tvUpdate);
 
             itemView.setOnClickListener(new View.OnClickListener() {

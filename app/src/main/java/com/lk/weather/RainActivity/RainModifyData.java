@@ -19,7 +19,7 @@ public class RainModifyData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rain_modify_data);
-        edtInday=(EditText)findViewById(R.id.edtInday);
+        edtInday=(EditText)findViewById(R.id.edtDeriction);
         edtBeforeday=(EditText)findViewById(R.id.edtBeforeday);
 
 

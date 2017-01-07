@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +57,20 @@ public class RainNorthFragment extends Fragment {
         access=new DBAccess(getActivity(),"weather",null,1);
         list=new ArrayList<RainDataModel>();
         Cursor c=access.getData("rain",null, null);
+        Cursor c2=access.getData("country",null, null);
         c.moveToFirst();
+        c2.moveToFirst();
+        c.moveToFirst();
+        c2.moveToFirst();
         for(int i=0;i<c.getCount();i++){
-            list.add(new RainDataModel(c.getString(0),c.getString(1),c.getString(2),c.getString(3),Integer.parseInt(c.getString(4))));
+            c2.moveToFirst();
+            c2.move(Integer.parseInt(c.getString(4))-1);
+            Log.e("Data country",c2.getString(1)+" "+c2.getString(5)+"  "+c.getString(4));
+            if(c2.getString(5).equals("北部")){
+                list.add(new RainDataModel(c.getString(0),c.getString(1),c.getString(2),c.getString(3),Integer.parseInt(c.getString(4))));
+               /* Log.e("Data country", c2.getString(1) + " " + c2.getString(2) + " "
+                        + c2.getString(3) + " " + c2.getString(4)+" "+c2.getString(5)+" "+c.getString(4));*/
+            }
             c.moveToNext();
         }
         adapter = new RainRecyclerAdapter(list,getActivity());

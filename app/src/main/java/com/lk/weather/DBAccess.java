@@ -41,6 +41,7 @@ public class DBAccess extends SQLiteOpenHelper {
                 +"pufu_speed text,"
                 +"gust text,"
                 +"pufu_gust text,"
+                +"position text,"
                 +"foreign key (c_id) references country(c_id) on delete cascade"
                 +")";
         Log.e("SQLDB",sql2);
@@ -118,7 +119,7 @@ public class DBAccess extends SQLiteOpenHelper {
        //return db.update("rain", val3, whereClause, null);
     }
     //建立新增wind
-    long add(String W_date,String direction,int speed,int pufu_speed,int gust,int pufu_gust){
+    public long add(String W_date,String direction,String speed,String pufu_speed,String gust,String pufu_gust,int position){
 
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues val2 = new ContentValues();
@@ -128,6 +129,7 @@ public class DBAccess extends SQLiteOpenHelper {
         val2.put("pufu_speed", 10);
         val2.put("gust", 23.45);
         val2.put("pufu_gust", 11);
+        val2.put("position",position);
         return db.insert("windspeed", null, val2);
     }
     long add(String a_date,int aqi,int o3,int pm25,int pm10){
@@ -282,7 +284,7 @@ public class DBAccess extends SQLiteOpenHelper {
         val17.put("population", 84);
         val17.put("Number_of_village", 33);
         val17.put("area", 2775.60);
-        val17.put("region", "南部");
+        val17.put("region", "東部");
         db.insert("country", null, val17);
 
         ContentValues val18 = new ContentValues();
@@ -290,7 +292,7 @@ public class DBAccess extends SQLiteOpenHelper {
         val18.put("population", 22);
         val18.put("Number_of_village", 16);
         val18.put("area", 3515.25);
-        val18.put("region", "南部");
+        val18.put("region", "東部");
         db.insert("country", null, val18);
 
         ContentValues val19 = new ContentValues();
@@ -466,13 +468,13 @@ public class DBAccess extends SQLiteOpenHelper {
             case "country": {
 
                 return db.query(NAME, new String[]{"c_id", "c_name", "population", "area"
-                                , "Number_of_village"}
+                                , "Number_of_village","region"}
                         , whereStr, null, null, null, orderbyStr);
             }
             case "windspeed": {
 
                 return db.query(NAME, new String[]{"c_id", "w_date", "deirection", "speed"
-                                , "pufu_speed", "gust", "pufu_gust"}
+                                , "pufu_speed", "gust", "pufu_gust","position"}
                         , whereStr, null, null, null, orderbyStr);
             }
 

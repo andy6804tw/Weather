@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         //初始化access
         access = new DBAccess(this, "weather", null, 1);
         //addData();
+
+
+
     }
     public void  call(){
 

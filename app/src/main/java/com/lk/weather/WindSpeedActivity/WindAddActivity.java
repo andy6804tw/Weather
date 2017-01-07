@@ -1,4 +1,4 @@
-package com.lk.weather.RainActivity;
+package com.lk.weather.WindSpeedActivity;
 
 import android.app.DatePickerDialog;
 import android.database.Cursor;
@@ -25,9 +25,10 @@ import com.lk.weather.R;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class RainAddData extends AppCompatActivity {
+public class WindAddActivity extends AppCompatActivity {
+
     DBAccess access;
-    EditText edtInday,edtBeforeday;
+    EditText edtDirection,edtSpeed,edtPufu_speed,edtGust,edtPufu_gust;
     TextView tvDate;
     DateFormat formatDateTime;
     Calendar dateTime ;
@@ -39,7 +40,7 @@ public class RainAddData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rain_add_data);
+        setContentView(R.layout.activity_wind_add);
         //判斷Statute bar寬高 fitsSystemWindows="true"
         Window window = this.getWindow();
         // Followed by google doc.
@@ -63,7 +64,7 @@ public class RainAddData extends AppCompatActivity {
         tvDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(RainAddData.this, d, dateTime.get(Calendar.YEAR), dateTime.get(Calendar.MONTH),
+                new DatePickerDialog(WindAddActivity.this, d, dateTime.get(Calendar.YEAR), dateTime.get(Calendar.MONTH),
                         dateTime.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -76,7 +77,7 @@ public class RainAddData extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mStrCountry=parent.getSelectedItem().toString();
                 mPosition=position+1;
-                Toast.makeText(RainAddData.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
+                Toast.makeText(WindAddActivity.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -105,35 +106,35 @@ public class RainAddData extends AppCompatActivity {
         }
     };
     public void addData(View view) {
-        edtInday = (EditText) findViewById(R.id.edtDeriction);
-        edtBeforeday = (EditText) findViewById(R.id.edtBeforeday);
+        edtDirection = (EditText) findViewById(R.id.edtDeriction);
+        edtSpeed = (EditText) findViewById(R.id.edtSpeed);
+        edtPufu_speed = (EditText) findViewById(R.id.edtPufu_speed);
+        edtGust = (EditText) findViewById(R.id.edtGust);
+        edtPufu_gust = (EditText) findViewById(R.id.edtPufu_gust);
         //Log.e("Error",tvTime.getText().toString());
         if (TextUtils.isEmpty(tvDate.getText().toString()))
-            Toast.makeText(RainAddData.this, "請正確選擇日期哦!", Toast.LENGTH_LONG).show();
+            Toast.makeText(WindAddActivity.this, "請正確選擇日期哦!", Toast.LENGTH_LONG).show();
         else {
             //檢查存在
-            Cursor c=access.getData("rain",null, null);
+            Cursor c=access.getData("windspeed",null, null);
             c.moveToFirst();
             int k;
             for(k=0;k<c.getCount();k++){
-                if(Integer.parseInt(c.getString(4))==mPosition)
+                if(Integer.parseInt(c.getString(7))==mPosition)
                     break;
                 c.moveToNext();
             }
             if(k!=c.getCount()){
-                Toast.makeText(RainAddData.this, "縣市已存在", Toast.LENGTH_LONG).show();
+                Toast.makeText(WindAddActivity.this, "縣市已存在", Toast.LENGTH_LONG).show();
             }else{
-                long result = access.add(tvDate.getText().toString(),edtInday.getText().toString(),edtBeforeday.getText().toString(),mPosition);
+                long result = access.add(tvDate.getText().toString(),edtDirection.getText().toString(),edtSpeed.getText().toString(),edtPufu_speed.getText().toString(),edtGust.getText().toString(),edtPufu_gust.getText().toString(),mPosition);
                 if (result >= 0) {
-                    Toast.makeText(RainAddData.this, "成功!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(WindAddActivity.this, "成功!", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    Toast.makeText(RainAddData.this, "失敗!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(WindAddActivity.this, "失敗!", Toast.LENGTH_LONG).show();
                 }
             }
-            edtInday.setText("");
-            tvDate.setText("");
-            edtBeforeday.setText("");
             finish();
 
         }
