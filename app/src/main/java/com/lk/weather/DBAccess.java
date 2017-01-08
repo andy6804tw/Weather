@@ -507,11 +507,12 @@ public class DBAccess extends SQLiteOpenHelper {
 
     }
     //更新rain
-    public  long update(String acc_indaay,String acc_beforeday,String whereClause) {
+    public  long update(String r_date,String acc_indaay,String acc_beforeday,String whereClause) {
     SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
     ContentValues values =new ContentValues();
-    values.put("acc_inday",acc_indaay);
-    values.put("acc_beforeday",acc_beforeday);
+        values.put("r_date",r_date);
+        values.put("acc_inday",acc_indaay);
+        values.put("acc_beforeday",acc_beforeday);
     //執行更新資料
     long result=db.update("rain", values, whereClause, null);
     db.close();
@@ -527,9 +528,10 @@ public class DBAccess extends SQLiteOpenHelper {
         return result;//回傳刪除筆數
     }
     //更新wind
-    public  long update(String direction,String speed,String pufu_speed,String gust,String pufu_gust,String whereClause) {
+    public  long update(String w_date,String direction,String speed,String pufu_speed,String gust,String pufu_gust,String whereClause) {
         SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
         ContentValues values =new ContentValues();
+        values.put("w_date",w_date);
         values.put("direction",direction);
         values.put("speed",speed);
         values.put("pufu_speed",pufu_speed);

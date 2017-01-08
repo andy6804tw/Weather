@@ -46,7 +46,7 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             tvCountry = (TextView)itemView.findViewById(R.id.tvCountry);
-            tvDate =(TextView)itemView.findViewById(R.id.tvCountry);
+            tvDate =(TextView)itemView.findViewById(R.id.tvDate);
             tvInday =(TextView)itemView.findViewById(R.id.tvInday);
             tvBeforeday =(TextView)itemView.findViewById(R.id.tvBeforeday);
             tvOption =(TextView)itemView.findViewById(R.id.tvOption);

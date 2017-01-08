@@ -11,7 +11,7 @@ import com.lk.weather.R;
 
 public class WindModifyData extends AppCompatActivity {
 
-    EditText edtDirection,edtSpeed,edtPufu_speed,edtGust,edtPufu_gust;
+    EditText edtDate,edtDirection,edtSpeed,edtPufu_speed,edtGust,edtPufu_gust;
     DBAccess access;
     String id;
 
@@ -24,6 +24,7 @@ public class WindModifyData extends AppCompatActivity {
         edtPufu_speed=(EditText)findViewById(R.id.edtPufu_speed);
         edtGust=(EditText)findViewById(R.id.edtGust);
         edtPufu_gust=(EditText)findViewById(R.id.edtPufu_gust);
+        edtDate=(EditText)findViewById(R.id.tvDate);
 
 
 
@@ -34,6 +35,7 @@ public class WindModifyData extends AppCompatActivity {
         Cursor c=access.getData("windspeed","c_id= "+id, null);//資料查詢，條件為_id等於上一個活動視窗傳遞過來的資料
         c.moveToFirst();//將指標一到第一筆
 
+        edtDate.setText(c.getString(1));
         edtDirection.setText(c.getString(2));//得到ID欄位的資料1
         edtSpeed.setText(c.getString(3));
         edtPufu_speed.setText(c.getString(4));
@@ -43,7 +45,7 @@ public class WindModifyData extends AppCompatActivity {
     }
 
     public void modify(View view) {
-       access.update(edtDirection.getText().toString(),edtSpeed.getText().toString(),edtPufu_speed.getText().toString(),edtGust.getText().toString(),edtPufu_gust.getText().toString(),"c_id= "+id);
+       access.update(edtDate.getText().toString(),edtDirection.getText().toString(),edtSpeed.getText().toString(),edtPufu_speed.getText().toString(),edtGust.getText().toString(),edtPufu_gust.getText().toString(),"c_id= "+id);
         finish();
 
     }

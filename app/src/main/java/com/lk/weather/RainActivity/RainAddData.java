@@ -76,7 +76,7 @@ public class RainAddData extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mStrCountry=parent.getSelectedItem().toString();
                 mPosition=position+1;
-                Toast.makeText(RainAddData.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
+                //Toast.makeText(RainAddData.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
             }
 
             @Override

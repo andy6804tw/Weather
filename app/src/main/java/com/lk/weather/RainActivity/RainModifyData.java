@@ -11,7 +11,7 @@ import com.lk.weather.R;
 
 public class RainModifyData extends AppCompatActivity {
 
-    EditText edtInday,edtBeforeday;
+    EditText edtInday,edtBeforeday,edtDate;
     DBAccess access;
     String id;
 
@@ -21,6 +21,7 @@ public class RainModifyData extends AppCompatActivity {
         setContentView(R.layout.activity_rain_modify_data);
         edtInday=(EditText)findViewById(R.id.edtDeriction);
         edtBeforeday=(EditText)findViewById(R.id.edtBeforeday);
+        edtDate=(EditText)findViewById(R.id.tvDate);
 
 
         access=new DBAccess(this, "weather", null, 1);
@@ -31,11 +32,12 @@ public class RainModifyData extends AppCompatActivity {
 
         edtInday.setText(c.getString(2));//得到ID欄位的資料1
         edtBeforeday.setText(c.getString(3));
+        edtDate.setText(c.getString(1));
 
     }
 
     public void modify(View view) {
-        access.update(edtInday.getText().toString(),edtBeforeday.getText().toString(),"c_id= "+id);
+        access.update(edtDate.getText().toString(),edtInday.getText().toString(),edtBeforeday.getText().toString(),"c_id= "+id);
         finish();
 
     }
