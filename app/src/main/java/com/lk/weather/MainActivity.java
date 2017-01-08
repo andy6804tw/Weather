@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         item_list = new ArrayList<>();
         item_list.add(new todoItem("雨量", "Rain", R.drawable.rain));
         item_list.add(new todoItem("風速", "Wind", R.drawable.wind));
-        item_list.add(new todoItem("空氣", "Air", R.drawable.air));
+        item_list.add(new todoItem("空氣", "Air", R.drawable.tide));
         TodoAdapter todoAdapter = new TodoAdapter(this, item_list);
         listView.setAdapter(todoAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
