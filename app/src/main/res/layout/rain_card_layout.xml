@@ -6,27 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/card_view"
-    android:layout_margin="5dp"
-    card_view:cardBackgroundColor="#d5aecf96"
+    card_view:cardBackgroundColor="#c8a7de7e"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="3dp"
     card_view:contentPadding="4dp"
     android:foreground="?selectableItemBackground"
-    android:clickable="true" >
+    android:clickable="true"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
 
         <TextView
                     android:text="今日雨量:150mm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvInday"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@+id/tvDate"
             android:layout_alignLeft="@+id/tvCountry"
-            android:layout_alignStart="@+id/tvCountry" />
+            android:layout_alignStart="@+id/tvCountry"
+            android:textColor="#00043b"/>
 
         <TextView
             android:text="2016/12/13"
@@ -35,7 +42,8 @@
             android:id="@+id/tvDate"
             android:layout_below="@+id/tvCountry"
             android:layout_alignLeft="@+id/tvCountry"
-            android:layout_alignStart="@+id/tvCountry" />
+            android:layout_alignStart="@+id/tvCountry"
+            android:textColor="#00043b"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,28 +56,19 @@
             android:paddingTop="3dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:textColor="#000000"/>
 
         <TextView
-            android:text="台北市"
+            android:text="昨日雨量:130mm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvCountry"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:layout_marginLeft="41dp"
-            android:layout_marginStart="41dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-                    android:text="昨日雨量:130mm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvBeforeday"
+            android:id="@+id/tvBeforeday"
             android:layout_alignBottom="@+id/waveLoadingView"
             android:layout_alignLeft="@+id/tvInday"
-            android:layout_alignStart="@+id/tvInday" />
+            android:layout_alignStart="@+id/tvInday"
+            android:textColor="#00043b"
+            android:layout_marginTop="12dp" />
 
         <me.itangqi.waveloadingview.WaveLoadingView
             android:id="@+id/waveLoadingView"
@@ -85,14 +84,27 @@
             app:wlv_titleCenterSize="15sp"
             app:wlv_waveAmplitude="70"
             app:wlv_waveColor="@android:color/holo_blue_dark"
-            android:layout_marginRight="18dp"
-            android:layout_marginEnd="18dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginEnd="27dp"
             android:layout_height="110dp"
             android:layout_width="90dp"
+            android:background="#4dc2c2c2"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/tvOption"
-            android:layout_toStartOf="@+id/tvOption"
-            android:background="#58d4f7b9"/>
+            android:layout_toStartOf="@+id/tvOption" />
+
+        <TextView
+            android:text="台北市"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCountry"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp"
+            android:textColor="#00043b"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

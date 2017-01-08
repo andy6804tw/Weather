@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
 
         public TextView tvDate,tvInday,tvBeforeday,tvCountry,tvOption;
         WaveLoadingView mWaveLoadingView;
+        CardView card_view;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -48,6 +50,7 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
             tvInday =(TextView)itemView.findViewById(R.id.tvInday);
             tvBeforeday =(TextView)itemView.findViewById(R.id.tvBeforeday);
             tvOption =(TextView)itemView.findViewById(R.id.tvOption);
+            card_view=(CardView)itemView.findViewById(R.id.card_view);
             mWaveLoadingView = (WaveLoadingView) itemView.findViewById(R.id.waveLoadingView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -86,6 +89,13 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
         viewHolder.mWaveLoadingView.setAnimDuration(3000);
         viewHolder.mWaveLoadingView.resumeAnimation();
         viewHolder.mWaveLoadingView.startAnimation();
+        //警界卡片顏色
+        if(Integer.parseInt(list.get(i).acc_inday)>=200&&Integer.parseInt(list.get(i).acc_inday)<500){
+            viewHolder.card_view.setCardBackgroundColor(0xe2fff399);
+        }
+        else if(Integer.parseInt(list.get(i).acc_inday)>=500){
+            viewHolder.card_view.setCardBackgroundColor(0xe2df6873);
+        }
 
         //設定卡片選項item option
         viewHolder.tvOption.setOnClickListener(new View.OnClickListener() {
