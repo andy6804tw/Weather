@@ -29,6 +29,6 @@
                     android:id="@+id/fab"
                     app:fabSize="normal"
                     app:backgroundTint="@color/floatButton"
-                    />
+                    android:src="@mipmap/ic_create_white_24dp"/>
             </android.support.design.widget.CoordinatorLayout>
         </LinearLayout>
