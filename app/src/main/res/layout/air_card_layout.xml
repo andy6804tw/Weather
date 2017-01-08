@@ -89,7 +89,7 @@
         </LinearLayout>
 
         <ImageView
-            card_view:srcCompat="@drawable/house01"
+            card_view:srcCompat="@drawable/build04"
             android:id="@+id/imageView5"
             android:layout_height="100dp"
             android:layout_width="90dp"
