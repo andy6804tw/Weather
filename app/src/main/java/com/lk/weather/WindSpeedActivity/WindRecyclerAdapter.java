@@ -53,7 +53,7 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
                 public void onClick(View v) {
                     int position = getAdapterPosition();
 
-                    Snackbar.make(v, "Click detected on item " + position,
+                    Snackbar.make(v, "\t\t\t\t\t\t\t☆風速蒲福: "+list.get(position).pufu_speed+"級 \t\t\t\t\t\t"+"☆陣風風速: "+list.get(position).gust+"mph",
                             Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
@@ -79,12 +79,12 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
         viewHolder.tvDate.setText(list.get(i).w_date);
         viewHolder.tvCountry.setText(c.getString(1) );
         //動畫設置
-        viewHolder. windView.setPressure(Integer.parseInt(list.get(i).gust));
-        viewHolder.windView.setPressureUnit("km/h");
-        viewHolder.windView.setWindSpeed(Integer.parseInt(list.get(i).speeed)*10);
+        viewHolder. windView.setPressure(Integer.parseInt(list.get(i).pufu_gust));
+        viewHolder.windView.setPressureUnit(" 級");
+        viewHolder.windView.setWindSpeed(Integer.parseInt(list.get(i).speeed));
         viewHolder.windView.setWindText(list.get(i).deriction);
         viewHolder.windView.setBarometerText("陣風");
-        viewHolder.windView.setWindSpeedUnit(" km/h");
+        viewHolder.windView.setWindSpeedUnit(" mph");
         viewHolder.windView.setTrendType(TrendType.UP);
         viewHolder.windView.start();
 
@@ -127,11 +127,6 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
             }
         });
 
-
-/*        viewHolder.tvWater.setText("有效蓄水量:" + WindSpeedActivity.Water.get(i) + "萬立方公頃");
-        viewHolder.tvDay.setText("預測剩餘天數:" + "60天以上");
-        viewHolder.tvUpdate.setText("最後更新日期:" + WindSpeedActivity.Update.get(i));
-        viewHolder.tvDown.setText("今日進水量:" + WindSpeedActivity.Down.get(i));*/
 
     }
 

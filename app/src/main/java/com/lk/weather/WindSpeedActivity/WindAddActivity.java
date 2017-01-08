@@ -77,7 +77,7 @@ public class WindAddActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mStrCountry=parent.getSelectedItem().toString();
                 mPosition=position+1;
-                Toast.makeText(WindAddActivity.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
+                //Toast.makeText(WindAddActivity.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -114,6 +114,9 @@ public class WindAddActivity extends AppCompatActivity {
         //Log.e("Error",tvTime.getText().toString());
         if (TextUtils.isEmpty(tvDate.getText().toString()))
             Toast.makeText(WindAddActivity.this, "請正確選擇日期哦!", Toast.LENGTH_LONG).show();
+        else if(TextUtils.isEmpty(edtDirection.getText().toString())||TextUtils.isEmpty(edtSpeed.getText().toString())||TextUtils.isEmpty(edtPufu_speed.getText().toString())||TextUtils.isEmpty(edtGust.getText().toString())||TextUtils.isEmpty(edtPufu_gust.getText().toString())){
+            Toast.makeText(WindAddActivity.this, "請確實填入資訊哦!", Toast.LENGTH_LONG).show();
+        }
         else {
             //檢查存在
             Cursor c=access.getData("windspeed",null, null);
@@ -135,7 +138,7 @@ public class WindAddActivity extends AppCompatActivity {
                     Toast.makeText(WindAddActivity.this, "失敗!", Toast.LENGTH_LONG).show();
                 }
             }
-            finish();
+
 
         }
     }
