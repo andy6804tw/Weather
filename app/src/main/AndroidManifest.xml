@@ -27,7 +27,9 @@
         <activity android:name=".RainActivity.RainAddData" />
         <activity android:name=".RainActivity.RainModifyData" />
         <activity android:name=".WindSpeedActivity.WindAddActivity" />
-        <activity android:name=".WindSpeedActivity.WindModifyData"></activity>
+        <activity android:name=".WindSpeedActivity.WindModifyData" />
+        <activity android:name=".AirActivity.AirAddActivity" />
+        <activity android:name=".AirActivity.AirModifyData"></activity>
     </application>
 
 </manifest>

@@ -43,8 +43,8 @@ public class AirEastFragment extends Fragment {
                 // startActivity(new Intent(getActivity(),AddEvent.class));
             }
         });
-        adapter = new AirRecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+        //adapter = new AirRecyclerAdapter();
+        //recyclerView.setAdapter(adapter);
 
 
 

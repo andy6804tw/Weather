@@ -1,4 +1,4 @@
-package com.lk.weather.WindSpeedActivity;
+package com.lk.weather.AirActivity;
 
 import android.app.DatePickerDialog;
 import android.database.Cursor;
@@ -25,10 +25,10 @@ import com.lk.weather.R;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class WindAddActivity extends AppCompatActivity {
+public class AirAddActivity extends AppCompatActivity {
 
+    EditText edtAqi,edtO3,edtPm25,edtPm10;
     DBAccess access;
-    EditText edtDirection,edtSpeed,edtPufu_speed,edtGust,edtPufu_gust;
     TextView tvDate;
     DateFormat formatDateTime;
     Calendar dateTime ;
@@ -36,11 +36,12 @@ public class WindAddActivity extends AppCompatActivity {
     String mStrCountry;
     int mPosition=0;
     String[]country=new String[]{"台北市","新北市","桃園市","基隆市","新竹市","新竹縣","宜蘭縣","台中市","苗栗縣","彰化縣","南投縣","雲林縣","台南市","高雄市","嘉義市","嘉義縣","屏東縣","台東縣","花蓮縣","澎湖縣","金門縣","連江縣"};
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wind_add);
+        setContentView(R.layout.activity_air_add);
         //判斷Statute bar寬高 fitsSystemWindows="true"
         Window window = this.getWindow();
         // Followed by google doc.
@@ -64,7 +65,7 @@ public class WindAddActivity extends AppCompatActivity {
         tvDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(WindAddActivity.this, d, dateTime.get(Calendar.YEAR), dateTime.get(Calendar.MONTH),
+                new DatePickerDialog(AirAddActivity.this, d, dateTime.get(Calendar.YEAR), dateTime.get(Calendar.MONTH),
                         dateTime.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -77,7 +78,7 @@ public class WindAddActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mStrCountry=parent.getSelectedItem().toString();
                 mPosition=position+1;
-                //Toast.makeText(WindAddActivity.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
+                //Toast.makeText(RainAddData.this,position+" "+id+" "+country[position],Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -106,39 +107,35 @@ public class WindAddActivity extends AppCompatActivity {
         }
     };
     public void addData(View view) {
-        edtDirection = (EditText) findViewById(R.id.edtAqi);
-        edtSpeed = (EditText) findViewById(R.id.edtSpeed);
-        edtPufu_speed = (EditText) findViewById(R.id.edtPufu_speed);
-        edtGust = (EditText) findViewById(R.id.edtGust);
-        edtPufu_gust = (EditText) findViewById(R.id.edtPufu_gust);
+        edtAqi = (EditText) findViewById(R.id.edtAqi);
+        edtO3 = (EditText) findViewById(R.id.edtO3);
+        edtPm25 = (EditText) findViewById(R.id.edtPm25);
+        edtPm10 = (EditText) findViewById(R.id.edtPm10);
         //Log.e("Error",tvTime.getText().toString());
         if (TextUtils.isEmpty(tvDate.getText().toString()))
-            Toast.makeText(WindAddActivity.this, "請正確選擇日期哦!", Toast.LENGTH_LONG).show();
-        else if(TextUtils.isEmpty(edtDirection.getText().toString())||TextUtils.isEmpty(edtSpeed.getText().toString())||TextUtils.isEmpty(edtPufu_speed.getText().toString())||TextUtils.isEmpty(edtGust.getText().toString())||TextUtils.isEmpty(edtPufu_gust.getText().toString())){
-            Toast.makeText(WindAddActivity.this, "請確實填入資訊哦!", Toast.LENGTH_LONG).show();
-        }
+            Toast.makeText(AirAddActivity.this, "請正確選擇日期哦!", Toast.LENGTH_LONG).show();
         else {
             //檢查存在
-            Cursor c=access.getData("windspeed",null, null);
+            Cursor c=access.getData("air",null, null);
             c.moveToFirst();
             int k;
             for(k=0;k<c.getCount();k++){
-                if(Integer.parseInt(c.getString(7))==mPosition)
+                if(Integer.parseInt(c.getString(6))==mPosition)
                     break;
                 c.moveToNext();
             }
             if(k!=c.getCount()){
-                Toast.makeText(WindAddActivity.this, "縣市已存在", Toast.LENGTH_LONG).show();
+                Toast.makeText(AirAddActivity.this, "縣市已存在", Toast.LENGTH_LONG).show();
             }else{
-                long result = access.add(tvDate.getText().toString(),edtDirection.getText().toString(),edtSpeed.getText().toString(),edtPufu_speed.getText().toString(),edtGust.getText().toString(),edtPufu_gust.getText().toString(),mPosition);
+                long result = access.add(tvDate.getText().toString(),edtAqi.getText().toString(),edtO3.getText().toString(),edtPm25.getText().toString(),edtPm10.getText().toString(),mPosition);
                 if (result >= 0) {
-                    Toast.makeText(WindAddActivity.this, "成功!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AirAddActivity.this, "成功!", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    Toast.makeText(WindAddActivity.this, "失敗!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AirAddActivity.this, "失敗!", Toast.LENGTH_LONG).show();
                 }
             }
-
+            finish();
 
         }
     }

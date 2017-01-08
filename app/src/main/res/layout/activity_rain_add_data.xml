@@ -48,16 +48,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/edtDeriction"
+                android:id="@+id/edtAqi"
                 android:hint="今日雨量"
                 android:background="@drawable/input_outlin"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:padding="15dp"
-                android:layout_below="@+id/edtDeriction"
-                android:layout_alignLeft="@+id/edtDeriction"
-                android:layout_alignStart="@+id/edtDeriction" />
+                android:layout_below="@+id/edtAqi"
+                android:layout_alignLeft="@+id/edtAqi"
+                android:layout_alignStart="@+id/edtAqi" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -77,7 +77,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:padding="15dp"
-                android:inputType="textMultiLine"
+                android:inputType="textPersonName"
                 android:layout_below="@+id/tvTime"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />

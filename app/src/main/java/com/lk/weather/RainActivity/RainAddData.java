@@ -105,7 +105,7 @@ public class RainAddData extends AppCompatActivity {
         }
     };
     public void addData(View view) {
-        edtInday = (EditText) findViewById(R.id.edtDeriction);
+        edtInday = (EditText) findViewById(R.id.edtAqi);
         edtBeforeday = (EditText) findViewById(R.id.edtBeforeday);
         //Log.e("Error",tvTime.getText().toString());
         if (TextUtils.isEmpty(tvDate.getText().toString()))

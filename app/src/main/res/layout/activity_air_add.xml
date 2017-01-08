@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/activity_main"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.lk.weather.WindSpeedActivity.WindAddActivity"
+tools:context="com.lk.weather.AirActivity.AirAddActivity"
 android:orientation="vertical">
 
 <LinearLayout
@@ -27,18 +28,13 @@ android:orientation="vertical">
         android:background="@drawable/text_view_border"
         android:layout_marginRight="5dp"
         android:paddingLeft="20dp"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="40dp" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"></Spinner>
+        android:layout_margin="35dp"></Spinner>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -52,7 +48,7 @@ android:orientation="vertical">
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/edtAqi"
-            android:hint="風向"
+            android:hint="AQI空氣指標"
             android:background="@drawable/input_outlin"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
@@ -73,8 +69,8 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/edtSpeed"
-            android:hint="風速(m/s)"
+            android:id="@+id/edtO3"
+            android:hint="O3臭氧濃度"
             android:background="@drawable/input_outlin"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
@@ -88,15 +84,15 @@ android:orientation="vertical">
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tilSpeed"
+        android:id="@+id/til3"
         android:padding="10dp">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/edtPufu_speed"
-            android:hint="風速的蒲福風級(級)"
+            android:id="@+id/edtPm25"
+            android:hint="PM2.5細懸浮微粒"
             android:background="@drawable/input_outlin"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
@@ -110,15 +106,15 @@ android:orientation="vertical">
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tilGust"
+        android:id="@+id/til4"
         android:padding="10dp">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/edtGust"
-            android:hint="陣風風速"
+            android:id="@+id/edtPm10"
+            android:hint="PM10懸浮微粒"
             android:background="@drawable/input_outlin"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
@@ -129,28 +125,7 @@ android:orientation="vertical">
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
     </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tilGust2"
-        android:padding="10dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/edtPufu_gust"
-            android:hint="陣風的蒲福風級(級)"
-            android:background="@drawable/input_outlin"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:padding="15dp"
-            android:inputType="textPersonName"
-            android:layout_below="@+id/tvTime"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-    </android.support.design.widget.TextInputLayout>
 </LinearLayout>
 <Button
     android:text="新增"

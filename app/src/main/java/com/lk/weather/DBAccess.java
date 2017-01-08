@@ -84,6 +84,7 @@ public class DBAccess extends SQLiteOpenHelper {
                 +"O3 text,"
                 +"PM25 text,"
                 +"PM10 text,"
+                +"position text,"
                 +"foreign key (c_id) references country (c_id) ON DELETE CASCADE,"
                 +"foreign key (AQI)  references aqi(AQI_index)ON DELETE CASCADE,"
                 +"foreign key (PM25) references pm25 (PM25_index) ON DELETE CASCADE"
@@ -132,15 +133,17 @@ public class DBAccess extends SQLiteOpenHelper {
         val2.put("position",position);
         return db.insert("windspeed", null, val2);
     }
-    long add(String a_date,int aqi,int o3,int pm25,int pm10){
+    //新增Air
+    public long add(String a_date,String aqi,String o3,String pm25,String pm10,int position){
 
         SQLiteDatabase db = getWritableDatabase();//物件可寫入資料
         ContentValues val6 = new ContentValues();
-        val6.put("a_date", "2017/01/03");
-        val6.put("AQI", 100);
-        val6.put("O3", 55);
-        val6.put("PM25", 99);
-        val6.put("PM10", 753);
+        val6.put("a_date", a_date);
+        val6.put("AQI", aqi);
+        val6.put("O3", o3);
+        val6.put("PM25", pm25);
+        val6.put("PM10", pm10);
+        val6.put("position", position);
         return db.insert("air", null, val6);
     }
 
@@ -329,7 +332,7 @@ public class DBAccess extends SQLiteOpenHelper {
 
 
         //pm
-        for(int i =0;i<=500;i++){
+        for(int i =1;i<=500;i++){
             ContentValues valfor1 = new ContentValues();
             if(i<=50) {
                 valfor1.put("AQI_index", i);
@@ -370,9 +373,9 @@ public class DBAccess extends SQLiteOpenHelper {
             }
         }
 
-        for (int j = 0; j <= 999; j++) {
+        for (int j = 1; j <= 999; j++) {
             ContentValues valfor2 = new ContentValues();
-            if (j >= 0 && j <= 11) {
+            if (j >= 1 && j <= 11) {
                 valfor2.put("PM25_index", j);
                 valfor2.put("PM25_sort", "低");
                 valfor2.put("PM25_level", 1);
@@ -498,13 +501,22 @@ public class DBAccess extends SQLiteOpenHelper {
             default: {
 
                 return db.query(NAME, new String[]{"c_id", "a_date", "AQI", "O3"
-                                , "PM25", "PM10"}
+                                , "PM25", "PM10","position"}
                         , whereStr, null, null, null, orderbyStr);
             }
         }
 
 
 
+    }
+    //刪除
+    public int delete(String TABLE_NAME,String _id){
+        SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
+        int result=0;
+        //進行刪除
+        result=db.delete(TABLE_NAME,"c_id ="+_id, null);
+        db.close();
+        return result;//回傳刪除筆數
     }
     //更新rain
     public  long update(String r_date,String acc_indaay,String acc_beforeday,String whereClause) {
@@ -518,15 +530,6 @@ public class DBAccess extends SQLiteOpenHelper {
     db.close();
     return result;//回傳更新資料筆數
 }
-    //刪除
-   public int delete(String TABLE_NAME,String _id){
-        SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
-       int result=0;
-       //進行刪除
-       result=db.delete(TABLE_NAME,"c_id ="+_id, null);
-        db.close();
-        return result;//回傳刪除筆數
-    }
     //更新wind
     public  long update(String w_date,String direction,String speed,String pufu_speed,String gust,String pufu_gust,String whereClause) {
         SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
@@ -539,6 +542,20 @@ public class DBAccess extends SQLiteOpenHelper {
         values.put("pufu_gust",pufu_gust);
         //執行更新資料
         long result=db.update("windspeed", values, whereClause, null);
+        db.close();
+        return result;//回傳更新資料筆數
+    }
+    //更新air
+    public  long update(String a_date,String AQI,String O3,String PM25,String PM10,String whereClause) {
+        SQLiteDatabase db=this.getWritableDatabase();//取得讀寫資料表物件
+        ContentValues values =new ContentValues();
+        values.put("a_date",a_date);
+        values.put("AQI",AQI);
+        values.put("O3",O3);
+        values.put("PM25",PM25);
+        values.put("PM10",PM10);
+        //執行更新資料
+        long result=db.update("air", values, whereClause, null);
         db.close();
         return result;//回傳更新資料筆數
     }

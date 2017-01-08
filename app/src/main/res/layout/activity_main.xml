@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.lk.weather.MainActivity"
     android:weightSum="1"
-    android:background="@drawable/bg11">
+    android:background="@drawable/bg07">
 
     <ImageView
         android:layout_width="match_parent"
