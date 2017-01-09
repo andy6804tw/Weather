@@ -8,17 +8,18 @@
     android:orientation="vertical"
     tools:context="com.lk.weather.MainActivity"
     android:weightSum="1"
-    android:background="@drawable/bg07">
+    >
 
     <ImageView
         android:layout_width="match_parent"
-        app:srcCompat="@drawable/bg01"
+        app:srcCompat="@drawable/bg12"
         android:id="@+id/imageView"
-        android:layout_height="229dp" />
+        android:layout_height="250dp" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.04"
-        android:id="@+id/listView" />
+        android:id="@+id/listView"
+        android:background="@drawable/bg06"/>
 </LinearLayout>

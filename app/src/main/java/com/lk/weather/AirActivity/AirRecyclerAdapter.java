@@ -69,7 +69,7 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup,int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.air_card_layout, viewGroup, false);
         final ViewHolder viewHolder = new ViewHolder(v);
@@ -80,14 +80,15 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
                 int index;
                 LinearLayout linearLayout = (LinearLayout)v.findViewById(R.id.linearLayout);
                 View subView = LayoutInflater.from(v.getContext()).inflate(R.layout.card_add_layout, (ViewGroup)v, false);
+                //PM2.5的建議
                 TextView tvDesc=(TextView)subView.findViewById(R.id.tvDesc);
-                TextView tvCategory=(TextView)subView.findViewById(R.id.tvCategory);
-                String strDesc="";
-                strDesc="desc";
-                if(strDesc.equals(""))
-                    strDesc="無";
-                tvDesc.setText("備註: " +strDesc);
-                tvCategory.setText("類別: " + "home");
+                TextView tvSort=(TextView)subView.findViewById(R.id.tvSort);
+                int pm25_index=Integer.parseInt(list.get(viewHolder.getAdapterPosition()).pm25);
+                Cursor c3=access.getData("pm25","PM25_index= "+pm25_index, null);
+                c3.moveToFirst();
+                tvSort.setText("分類等級 : "+c3.getString(1));
+                tvDesc.setText("建議 : " +c3.getString(3));
+
 
                 //利用單元控制的標記值就標記為單元格的單元格，而不是單元格的單元格。標記值也就不存在了。
                 //如果不取消重用，那麼將會出現未曾點擊就已經添加子視圖的效果，再點擊的時間會繼續添加而不是收回。
@@ -103,13 +104,36 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
                 if (index == 1) {
                     linearLayout.addView(subView);
                     subView.setTag(1000);
-                    viewHolder.card_view.setCardBackgroundColor(0xe2fff399);
+                    //根據PM2.5變CardView顏色 使用PM25_level指標等級1~10
+                    int pm25_level= Integer.parseInt(c3.getString(2));
+                    if(pm25_level==1)
+                        viewHolder.card_view.setCardBackgroundColor(0x6c9bfd9b);
+                    else if(pm25_level==2)
+                        viewHolder.card_view.setCardBackgroundColor(0x6c31fd01);
+                    else if(pm25_level==3)
+                        viewHolder.card_view.setCardBackgroundColor(0x6c31ce01);
+                    else if(pm25_level==4)
+                        viewHolder.card_view.setCardBackgroundColor(0x6cfdfd01);
+                    else if(pm25_level==5)
+                        viewHolder.card_view.setCardBackgroundColor(0x6cfdce01);
+                    else if(pm25_level==6)
+                        viewHolder.card_view.setCardBackgroundColor(0x6cfd9901);
+                    else if(pm25_level==7)
+                        viewHolder.card_view.setCardBackgroundColor(0x6cfd6464);
+                    else if(pm25_level==8)
+                        viewHolder.card_view.setCardBackgroundColor(0x6cfd0001);
+                    else if(pm25_level==9)
+                        viewHolder.card_view.setCardBackgroundColor(0x6c980001);
+                    else
+                        viewHolder.card_view.setCardBackgroundColor(0x6ccd30fe);
+
+
                     v.findViewById(R.id.linearLayout).setTag(2);
                 } else {
                     // open狀態： 移除增加內容
                     linearLayout.removeView(v.findViewWithTag(1000));
                     v.findViewById(R.id.linearLayout).setTag(1);
-                    viewHolder.card_view.setCardBackgroundColor(0xe2df6873);
+                    viewHolder.card_view.setCardBackgroundColor(0xc8f7dab9);
                 }
             }
         });
@@ -157,8 +181,8 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
         imgBuild_index=Integer.parseInt(c.getString(0));
         //設定建築物圖示
         viewHolder.imgBuild.setImageResource(photos[imgBuild_index-1]);
-        viewHolder.tvO3.setText("O3臭氧濃度: "+list.get(i).o3+" ppb");
-        viewHolder.tvAqiDes.setText("建議: "+c2.getString(3));
+        viewHolder.tvO3.setText("O3臭氧濃度 : "+list.get(i).o3+" ppb");
+        viewHolder.tvAqiDes.setText("建議 : "+c2.getString(3));
         //設定卡片選項item option
         viewHolder.tvOption.setOnClickListener(new View.OnClickListener() {
             @Override

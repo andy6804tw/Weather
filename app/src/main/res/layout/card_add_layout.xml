@@ -8,27 +8,30 @@
 
 
     <TextView
-        android:text="類別:學校"
-        android:layout_width="wrap_content"
+        android:text="★PM2.5細懸浮微粒"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:id="@+id/tvCategory"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="6dp"/>
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:text="分類等級:非常高"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSort"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="備註:無"
-        android:textColor="#000000"
+        android:text="建議:出門戴口罩"
         android:gravity="center"
         android:id="@+id/tvDesc"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp" />
 
 
 </LinearLayout>
