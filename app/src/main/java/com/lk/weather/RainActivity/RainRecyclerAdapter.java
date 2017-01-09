@@ -79,10 +79,10 @@ public class RainRecyclerAdapter extends RecyclerView.Adapter<RainRecyclerAdapte
         access=new DBAccess(mContext,"weather",null,1);
         Cursor c=access.getData("country",null, null);
         c.move(list.get(i).position);
-        viewHolder.tvDate.setText("今日日期:" + list.get(i).r_date);
+        viewHolder.tvDate.setText( list.get(i).r_date);
         viewHolder.tvCountry.setText(c.getString(1) );
-        viewHolder.tvInday.setText("今日下雨量:" + list.get(i).acc_inday+" mm");
-        viewHolder.tvBeforeday.setText("昨日下雨量:" + list.get(i).acc_beforeday+" mm");
+        viewHolder.tvInday.setText("今日下雨量 : " + list.get(i).acc_inday+" mm");
+        viewHolder.tvBeforeday.setText("昨日下雨量 : " + list.get(i).acc_beforeday+" mm");
         //設定wave progress
         viewHolder.mWaveLoadingView.setCenterTitle(list.get(i).acc_inday+" mm");
         viewHolder.mWaveLoadingView.setProgressValue(Integer.parseInt(list.get(i).acc_inday)/10);

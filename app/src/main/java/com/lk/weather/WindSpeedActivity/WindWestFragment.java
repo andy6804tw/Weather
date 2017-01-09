@@ -1,6 +1,7 @@
 package com.lk.weather.WindSpeedActivity;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -49,7 +50,7 @@ public class WindWestFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startActivity(new Intent(getActivity(),AddEvent.class));
+                 startActivity(new Intent(getActivity(),WindAddActivity.class));
             }
         });
         //初始化access
