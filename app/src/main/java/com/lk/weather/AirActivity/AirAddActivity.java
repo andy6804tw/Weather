@@ -35,7 +35,7 @@ public class AirAddActivity extends AppCompatActivity {
     Spinner spinner;
     String mStrCountry;
     int mPosition=0;
-    String[]country=new String[]{"台北市","新北市","桃園市","基隆市","新竹市","新竹縣","宜蘭縣","台中市","苗栗縣","彰化縣","南投縣","雲林縣","台南市","高雄市","嘉義市","嘉義縣","屏東縣","台東縣","花蓮縣","澎湖縣","金門縣","連江縣"};
+    String[]country=new String[]{"台北市","新北市","桃園市","基隆市","新竹市","新竹縣","宜蘭縣","台中市","苗栗縣","彰化縣","南投縣","雲林縣","台南市","高雄市","嘉義市","嘉義縣","屏東縣","台東縣","花蓮縣"};
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

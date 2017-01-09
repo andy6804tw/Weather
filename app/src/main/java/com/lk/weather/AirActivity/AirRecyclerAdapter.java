@@ -43,7 +43,7 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
 
         public TextView tvCountry,tvAqiDes,tvO3,tvOption;
         CardView card_view;
-        ImageView imgFace;
+        ImageView imgFace,imgBuild;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -53,6 +53,7 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
             tvOption = (TextView)  itemView.findViewById(R.id.tvOption);
             card_view=(CardView)itemView.findViewById(R.id.card_view);
             imgFace=(ImageView)itemView.findViewById(R.id.imgFace);
+            imgBuild=(ImageView)itemView.findViewById(R.id.imgBuild);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -122,7 +123,9 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
         int aqi_index=Integer.parseInt(list.get(i).aqi);
         int pm25_index=Integer.parseInt(list.get(i).pm25);
         int aqiValue=Integer.parseInt(list.get(i).aqi);
+        int imgBuild_index=1;
 
+        //設定表情圖示
         if(aqiValue>=1&&aqiValue<=50)
             viewHolder.imgFace.setImageResource(R.drawable.face01);
         else if(aqiValue>50&&aqiValue<=100)
@@ -135,6 +138,12 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
             viewHolder.imgFace.setImageResource(R.drawable.face05);
         else if(aqiValue>300&&aqiValue<=500)
             viewHolder.imgFace.setImageResource(R.drawable.face06);
+         Integer[] photos = new Integer[]
+                {R.drawable.build1,R.drawable.build2,R.drawable.build3,R.drawable.build4,R.drawable.build5,R.drawable.build6,R.drawable.build7,R.drawable.build8,R.drawable.build9
+                        ,R.drawable.build10,R.drawable.build11,R.drawable.build12,R.drawable.build13,R.drawable.build14,R.drawable.build15,R.drawable.build16,R.drawable.build17
+                        ,R.drawable.build18,R.drawable.build19};
+
+
 
         //初始化access
         access=new DBAccess(mContext,"weather",null,1);
@@ -145,6 +154,9 @@ public class AirRecyclerAdapter extends RecyclerView.Adapter<AirRecyclerAdapter.
         c3.moveToFirst();
         c.move(list.get(i).position);
         viewHolder.tvCountry.setText(c.getString(1));
+        imgBuild_index=Integer.parseInt(c.getString(0));
+        //設定建築物圖示
+        viewHolder.imgBuild.setImageResource(photos[imgBuild_index-1]);
         viewHolder.tvO3.setText("O3臭氧濃度: "+list.get(i).o3+" ppb");
         viewHolder.tvAqiDes.setText("建議: "+c2.getString(3));
         //設定卡片選項item option
