@@ -53,7 +53,7 @@ public class WindRecyclerAdapter extends RecyclerView.Adapter<WindRecyclerAdapte
                 public void onClick(View v) {
                     int position = getAdapterPosition();
 
-                    Snackbar.make(v, "\t\t\t\t\t\t\t☆風速蒲福: "+list.get(position).pufu_speed+"級 \t\t\t\t\t\t"+"☆陣風風速: "+list.get(position).gust+"mph",
+                    Snackbar.make(v, "\t\t\t\t\t\t☆風速蒲福: "+list.get(position).pufu_speed+"級 \t\t\t\t\t\t"+"☆陣風風速: "+list.get(position).gust+"mph",
                             Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
