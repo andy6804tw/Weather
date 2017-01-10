@@ -11,8 +11,6 @@ import android.view.WindowManager;
 import com.lk.weather.R;
 import com.lk.weather.ViewPagerAdapter;
 
-import java.util.ArrayList;
-
 public class RainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -20,10 +18,6 @@ public class RainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
 
-    public static ArrayList<String> Water;
-    public static ArrayList<String> Day;
-    public static ArrayList<String>Update;
-    public static ArrayList<String>Down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,30 +41,6 @@ public class RainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragments(new RainEastFragment(), "東部");
 
         //setupTabIcons();
-        Water=new ArrayList<>();
-        Day=new ArrayList<>();
-        Update=new ArrayList<>();
-        Down=new ArrayList<>();
-        Water.add("10003");
-        Water.add("1400");
-        Water.add("15699");
-        Water.add("15699");
-        Water.add("15699");
-        Day.add("2016/12/31");
-        Day.add("2016/12/30");
-        Day.add("2016/12/29");
-        Day.add("2016/12/29");
-        Day.add("2016/12/29");
-        Update.add("18hr");
-        Update.add("1hr");
-        Update.add("1hr");
-        Update.add("1hr");
-        Update.add("10hr");
-        Down.add("16500mm");
-        Down.add("1800mm");
-        Down.add("1800mm");
-        Down.add("1800mm");
-        Down.add("1760mm");
     }
 
     @Override
